@@ -3,11 +3,11 @@ package hansung.designpatterns.observer;
 import java.util.*;
 
 public class WeatherData implements Subject {
-    protected ArrayList<Observer> observers;
+    private ArrayList<Observer> observers;
     private float temperature;
     private float humidity;
     private float pressure;
-    protected boolean changed;
+    private boolean changed;
 
     public WeatherData() {
         observers = new ArrayList<Observer>();

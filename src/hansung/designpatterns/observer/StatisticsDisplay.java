@@ -28,8 +28,23 @@ public class StatisticsDisplay implements Observer, DisplayElement {
 	}
 
 	@Override
-	public void update(Subject weatherData, Object arg) {
+	public void update(Subject obs, Object arg) {
+		if (obs instanceof TimedWeatherData) {
+			TimedWeatherData timedweatherData = (TimedWeatherData)obs;
+			float temp = timedweatherData.getTemperature();
+			tempSum += temp;
+			numReadings++;
 
+			if (temp > maxTemp) {
+				maxTemp = temp;
+			}
+
+			if (temp < minTemp) {
+				minTemp = temp;
+			}
+
+			display();
+		}
 	}
 
 
