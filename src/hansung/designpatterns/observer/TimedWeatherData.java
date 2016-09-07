@@ -11,18 +11,16 @@ public class TimedWeatherData extends WeatherData {
 
     public void setMeasurements(float temperature, float humidity, float pressure) {
         this.measuredTime = new Date().toString();
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.pressure = pressure;
-        measurementsChanged();
+        super.setMeasurements(temperature, humidity, pressure);
+
     }
-    public void notifyObservers(Object arg) {
+    /*public void notifyObservers(Object arg) {
         if (changed) {
             for (Observer observer : observers) {
                 observer.update(this,arg);
             }
             changed = false;
         }
-    }
+    }*/
     public String getMeasuredTime() { return measuredTime; }
 }

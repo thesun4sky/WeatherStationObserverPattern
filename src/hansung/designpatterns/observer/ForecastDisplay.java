@@ -1,7 +1,7 @@
 package hansung.designpatterns.observer;
 
 public class ForecastDisplay implements Observer, DisplayElement {
-	private float currentPressure = 29.92f;  
+	private float currentPressure = 29.92f;
 	private float lastPressure;
 	private WeatherData weatherData;
 
@@ -11,21 +11,21 @@ public class ForecastDisplay implements Observer, DisplayElement {
 	}
 
 	public void update(float temp, float humidity, float pressure) {
-        lastPressure = currentPressure;
+		lastPressure = currentPressure;
 		currentPressure = pressure;
 
 		display();
 	}
 
 	@Override
-	public void update(TimedWeatherData weatherData, Object arg) {
-
+	public void update(Subject obs, Object arg) {
+		if (obs instanceof TimedWeatherData) {
+			TimedWeatherData timedweatherData = (TimedWeatherData)obs;
+			this.currentPressure = timedweatherData.getPressure();
+			display();
+		}
 	}
 
-	@Override
-	public void update(WeatherData weatherData, Object arg) {
-
-	}
 
 	public void display() {
 		System.out.print("Forecast: ");

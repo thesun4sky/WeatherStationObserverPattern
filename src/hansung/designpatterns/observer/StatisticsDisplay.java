@@ -19,7 +19,7 @@ public class StatisticsDisplay implements Observer, DisplayElement {
 		if (temp > maxTemp) {
 			maxTemp = temp;
 		}
- 
+
 		if (temp < minTemp) {
 			minTemp = temp;
 		}
@@ -28,17 +28,13 @@ public class StatisticsDisplay implements Observer, DisplayElement {
 	}
 
 	@Override
-	public void update(TimedWeatherData weatherData, Object arg) {
+	public void update(Subject weatherData, Object arg) {
 
 	}
 
-	@Override
-	public void update(WeatherData obs, Object arg) {
-
-	}
 
 	public void display() {
 		System.out.println("Avg/Max/Min temperature = " + (tempSum / numReadings)
-			+ "/" + maxTemp + "/" + minTemp);
+				+ "/" + maxTemp + "/" + minTemp);
 	}
 }
